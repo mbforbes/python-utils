@@ -9,7 +9,7 @@ import pandas as pd
 
 def read(path: str) -> str:
     """Returns contents of file at `path`, leading/trailing whitespace stripped."""
-    with open(path, "r") as f:
+    with open(os.path.expanduser(path), "r") as f:
         return f.read().strip()
 
 
