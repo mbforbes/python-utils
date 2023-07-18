@@ -5,7 +5,7 @@ So maybe I stop writing the same things over and over.
 ## Installation
 
 ```sh
-# Python 3 only (I'm using Python 3.7).
+# Python 3.9+ only (due to PEP 585 type annotations)
 pip install mbforbes-python-utils
 ```
 

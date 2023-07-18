@@ -1,8 +1,7 @@
 """Python utils."""
 
-import code  # code.interact(local=dict(globals(), **locals()))
 import os
-from typing import List, Tuple, Dict, Set, Any, Optional, Callable
+from typing import Any
 
 
 # def flatten(lst):
@@ -13,15 +12,16 @@ from typing import List, Tuple, Dict, Set, Any, Optional, Callable
 #         else:
 #             yield el
 
-def flatten(lst):
+def flatten(lst: list[Any]) -> list[Any]:
     """Flattens list of any depth to a single list."""
     result = []
     for el in lst:
         if isinstance(el, list):
-            result.extend(flatten(el))
+            result.extend(flatten(el))  # type: ignore
         else:
-            result.append(el)
-    return result
+            result.append(el)  # type: ignore
+    return result  # type: ignore
+
 
 def read(path: str) -> str:
     """Returns contents of file at `path`, leading/trailing whitespace stripped."""
@@ -38,12 +38,3 @@ def write(path: str, contents: str, info_print: bool = True) -> None:
         f.write(contents)
     if info_print:
         print('Wrote {} chars to "{}"'.format(len(contents), path))
-
-
-def main() -> None:
-    # This would be for testing out code only.
-    pass
-
-
-if __name__ == "__main__":
-    main()
