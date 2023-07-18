@@ -5,6 +5,24 @@ import os
 from typing import List, Tuple, Dict, Set, Any, Optional, Callable
 
 
+# def flatten(lst):
+#     """Generator version. Consider adding this at some point."""
+#     for el in lst:
+#         if isinstance(el, list):
+#             yield from flatten(el)
+#         else:
+#             yield el
+
+def flatten(lst):
+    """Flattens list of any depth to a single list."""
+    result = []
+    for el in lst:
+        if isinstance(el, list):
+            result.extend(flatten(el))
+        else:
+            result.append(el)
+    return result
+
 def read(path: str) -> str:
     """Returns contents of file at `path`, leading/trailing whitespace stripped."""
     with open(os.path.expanduser(path), "r") as f:
