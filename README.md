@@ -40,6 +40,6 @@ I don't do this enough to remember how to do it
 pip install twine wheel
 python setup.py sdist bdist_wheel
 twine check dist/*
-# If the above failed, `rm -rf build/ dist/` before retrying
+# If the above failed, `rm -rf build/ dist/ *.egg-info` before retrying
 twine upload dist/*
 ```
