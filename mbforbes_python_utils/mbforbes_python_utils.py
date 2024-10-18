@@ -1,7 +1,19 @@
 """Python utils."""
 
+import argparse
 import os
-from typing import Any
+from typing import Any, Callable
+
+
+def display_args(args: argparse.Namespace, display: Callable[[str], None] = print):
+    """Displays parsed `args` (defaults to `print`, pass anything that takes `str`.)"""
+    display("")
+    display("Arguments:")
+    arg_width = max(len(arg) for arg in vars(args))
+    for arg in vars(args):
+        value = getattr(args, arg)
+        display(f"{arg.ljust(arg_width)}: {value} [{type(value).__name__}]")
+    display("")
 
 
 # def flatten(lst):
@@ -11,6 +23,7 @@ from typing import Any
 #             yield from flatten(el)
 #         else:
 #             yield el
+
 
 def flatten(lst: list[Any]) -> list[Any]:
     """Flattens list of any depth to a single list."""
@@ -30,7 +43,7 @@ def read(path: str) -> str:
 
 
 def write(path: str, contents: str, info_print: bool = True) -> None:
-    """Writes contents to path, makes dirs if needed, prints info msg w/ path."""
+    """Writes `contents` to `path`, makes dirs if needed, prints info msg w/ path."""
     dirname = os.path.dirname(path)
     if dirname != "":
         os.makedirs(dirname, exist_ok=True)

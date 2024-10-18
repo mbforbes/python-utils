@@ -41,5 +41,7 @@ pip install twine wheel
 python setup.py sdist bdist_wheel
 twine check dist/*
 # If the above failed, `rm -rf build/ dist/ *.egg-info` before retrying
+# NOTE: This seems to upload old versions too. Probably fine if they don't
+# change but maybe better to just do the `rm` command above first?
 twine upload dist/*
 ```
